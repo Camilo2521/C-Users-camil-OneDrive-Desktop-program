@@ -1,0 +1,385 @@
+{
+  "info": {
+    "name": "Backend API Completo",
+    "_postman_id": "abcdef12-3456-7890-abcd-ef1234567890",
+    "description": "Colección completa para Postman de tu backend con JWT y roles",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registrar usuario (público)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"student\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/sessions/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "sessions", "login"]
+        }
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/sessions/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "sessions", "logout"]
+        }
+      }
+    },
+    {
+      "name": "Obtener sesiones",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/sessions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "sessions"]
+        }
+      }
+    },
+    {
+      "name": "Listar usuarios (admin)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "Obtener usuario por ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_teacher}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/users/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users", "1"]
+        }
+      }
+    },
+    {
+      "name": "Actualizar usuario",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_teacher}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Juan Pérez Actualizado\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/users/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users", "1"]
+        }
+      }
+    },
+    {
+      "name": "Eliminar usuario (admin)",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/users/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users", "1"]
+        }
+      }
+    },
+    {
+      "name": "Crear pregunta (teacher)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_teacher}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"¿Tienes cansancio frecuente?\",\n  \"type\": \"boolean\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/questions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "questions"]
+        }
+      }
+    },
+    {
+      "name": "Listar preguntas",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/questions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "questions"]
+        }
+      }
+    },
+    {
+      "name": "Obtener pregunta por ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/questions/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "questions", "1"]
+        }
+      }
+    },
+    {
+      "name": "Actualizar pregunta",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_teacher}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"¿Tienes cansancio o fatiga frecuente?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/questions/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "questions", "1"]
+        }
+      }
+    },
+    {
+      "name": "Eliminar pregunta",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_teacher}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/questions/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "questions", "1"]
+        }
+      }
+    },
+    {
+      "name": "Crear respuesta",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_student}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"questionId\": 1,\n  \"diagnosisId\": 1,\n  \"response\": \"Cansancio\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/answers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "answers"]
+        }
+      }
+    },
+    {
+      "name": "Listar respuestas",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/answers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "answers"]
+        }
+      }
+    },
+    {
+      "name": "Obtener respuesta por ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/answers/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "answers", "1"]
+        }
+      }
+    },
+    {
+      "name": "Actualizar respuesta",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_student}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"response\": \"Cansancio y fatiga\"\n}" },
+        "url": {
+          "raw": "http://localhost:3000/api/answers/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "answers", "1"]
+        }
+      }
+    },
+    {
+      "name": "Eliminar respuesta",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_student}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/answers/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "answers", "1"]
+        }
+      }
+    },
+    {
+      "name": "Crear diagnóstico",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_teacher}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"result\": \"Pendiente\",\n  \"notes\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/diagnoses",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "diagnoses"]
+        }
+      }
+    },
+    {
+      "name": "Listar diagnósticos",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_teacher}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/diagnoses",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "diagnoses"]
+        }
+      }
+    },
+    {
+      "name": "Obtener diagnóstico por ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_teacher}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/diagnoses/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "diagnoses", "1"]
+        }
+      }
+    },
+    {
+      "name": "Actualizar diagnóstico",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_teacher}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"result\": \"Hipotiroidismo\",\n  \"notes\": \"Confirmado con análisis\"\n}" },
+        "url": {
+          "raw": "http://localhost:3000/api/diagnoses/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "diagnoses", "1"]
+        }
+      }
+    },
+    {
+      "name": "Eliminar diagnóstico",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token_teacher}}" }],
+        "url": {
+          "raw": "http://localhost:3000/api/diagnoses/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "diagnoses", "1"]
+        }
+      }
+    }
+  ]
+}
